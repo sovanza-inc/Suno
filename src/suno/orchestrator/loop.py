@@ -27,6 +27,7 @@ import traceback
 from suno.orchestrator import state as state_module
 from suno.orchestrator.phases import (
     acquire,
+    cleanup,
     curate,
     evaluate,
     journal,
@@ -41,6 +42,7 @@ PHASES = [
     ("train", train.run),
     ("evaluate", evaluate.run),
     ("promote", promote.run),
+    ("cleanup", cleanup.run),
     ("journal", journal.run),
     ("plan_next", plan_next.run),
 ]

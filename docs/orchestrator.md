@@ -9,8 +9,9 @@ A deterministic Python loop that trains and evaluates Whisper LoRA adapters cont
 3. **train** — subprocess `python -m suno.models.stt.whisper_lora_trainer` for `SUNO_TRAIN_STEPS` LoRA steps, resuming from the previous iteration's adapter if it exists.
 4. **evaluate** — subprocess `python -m suno.evaluation.stt` on FLEURS ur_pk test, `SUNO_EVAL_SAMPLES` samples. Emits `FINAL_WER` to log; phase parses it back into state.
 5. **promote** — if WER improved, copy the new adapter to `models/current_best/`.
-6. **journal** — append summary to `PROGRESS.md`, `git add` + `git commit` + (opt) `git push`.
-7. **plan_next** — task_planner rewrites `NEXT_TASK.md` based on recent trends.
+6. **cleanup** — delete old iteration adapters keeping `current_best/` + last `SUNO_KEEP_ITERATIONS` (default 3). Prevents disk fill.
+7. **journal** — append summary to `PROGRESS.md`, `git add` + `git commit` + (opt) `git push`.
+8. **plan_next** — task_planner rewrites `NEXT_TASK.md` based on recent trends.
 
 Then sleep `SUNO_LOOP_SLEEP` seconds (default 600) and repeat.
 
@@ -25,6 +26,7 @@ Then sleep `SUNO_LOOP_SLEEP` seconds (default 600) and repeat.
 | `SUNO_BASE_MODEL` | `openai/whisper-small` | Base model for LoRA |
 | `SUNO_FETCH_CV` | unset | `1` enables Common Voice ur (~80 hr) |
 | `SUNO_AUTO_PUSH` | unset | `1` runs `git push` after every new-best promotion |
+| `SUNO_KEEP_ITERATIONS` | 3 | How many old iteration adapters to retain |
 
 ## Running
 

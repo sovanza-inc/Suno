@@ -19,6 +19,12 @@ fmt:
 smoke:
 	. .venv/bin/activate && SUNO_LOOP_MAX_ITERS=1 SUNO_TRAIN_STEPS=5 SUNO_EVAL_SAMPLES=2 python -m suno.orchestrator.loop
 
+status:
+	. .venv/bin/activate && python scripts/show_progress.py
+
+plan:
+	. .venv/bin/activate && suno-plan
+
 loop:
 	./scripts/start_loop.sh
 

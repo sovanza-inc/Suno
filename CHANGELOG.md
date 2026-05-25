@@ -7,6 +7,8 @@ Format inspired by [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 ## [Unreleased]
 
 ### Added
+- `phases/cleanup.py` — deletes old iteration adapters to prevent disk fill (keeps `current_best/` + last 3 by default; tunable via `SUNO_KEEP_ITERATIONS`)
+- `scripts/show_progress.py` — terminal sparkline + WER history view (`make status`)
 - Enterprise `src/suno/` package layout with proper pyproject.toml + CLI entry points (`suno-loop`, `suno-stt`, `suno-tts`, `suno-eval`, `suno-train`, `suno-plan`)
 - `CLAUDE.md` and `AGENTS.md` — protocol files for AI agents working in this repo
 - `docs/` folder with architecture, orchestrator, training, evaluation, deployment, and hardware docs
