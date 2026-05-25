@@ -9,6 +9,7 @@ This directory holds locked architectural decisions. Each file is one ADR (Archi
 - [003 — VITS / StyleTTS2 are the TTS production bases](003-vits-for-tts.md)
 - [004 — Pakistani test set is the only ship-gate](004-pakistani-testset-only.md)
 - [005 — Deterministic Python orchestrator, not Claude-in-a-loop](005-python-orchestrator-not-claude-loop.md)
+- [006 — Claude-in-loop as a separate code-improvement layer](006-claude-loop-as-separate-layer.md) (amends 005)
 
 ## ADR template
 

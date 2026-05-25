@@ -7,6 +7,16 @@ Format inspired by [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 ## [Unreleased]
 
 ### Added
+- **Claude code-improvement loop** as a second autonomous layer alongside the Python ML loop:
+  - `scripts/claude_loop.sh` — invokes `claude -p` per iteration to work through `TASKS.md`
+  - `scripts/claude_loop_stop.sh` — graceful shutdown
+  - `.claude/settings.json` — hook config + Bash allowlist
+  - `.claude/guard.sh` — PreToolUse hook blocking destructive commands
+  - `TASKS.md` — explicit code-improvement queue
+  - `CLAUDE.md` — rewritten with Mission, Hard Rules, Learned Rules, Loop protocol sections
+  - `docs/two-loops.md` — interaction model between the two loops
+  - [ADR-006](docs/decisions/006-claude-loop-as-separate-layer.md) — amends ADR-005 to permit Claude in a *code* loop (not ML loop)
+  - Makefile targets: `claude-loop`, `claude-loop-stop`, `claude-loop-dry`
 - `phases/cleanup.py` — deletes old iteration adapters to prevent disk fill (keeps `current_best/` + last 3 by default; tunable via `SUNO_KEEP_ITERATIONS`)
 - `scripts/show_progress.py` — terminal sparkline + WER history view (`make status`)
 - Enterprise `src/suno/` package layout with proper pyproject.toml + CLI entry points (`suno-loop`, `suno-stt`, `suno-tts`, `suno-eval`, `suno-train`, `suno-plan`)

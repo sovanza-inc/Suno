@@ -37,6 +37,15 @@ loop-install:
 loop-uninstall:
 	./scripts/uninstall_launchd.sh
 
+claude-loop:
+	./scripts/claude_loop.sh
+
+claude-loop-stop:
+	./scripts/claude_loop_stop.sh
+
+claude-loop-dry:
+	SUNO_CLAUDE_DRY_RUN=1 ./scripts/claude_loop.sh
+
 clean:
 	rm -rf build/ dist/ *.egg-info src/*.egg-info __pycache__ .pytest_cache .ruff_cache
 	find . -type d -name __pycache__ -prune -exec rm -rf {} +

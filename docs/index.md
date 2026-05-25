@@ -6,7 +6,8 @@ Open-source speech AI (STT + TTS) for Urdu and other Pakistani languages.
 
 - [Getting started](getting-started.md) — install, smoke-test, first inference
 - [Architecture](architecture.md) — how the pieces fit together
-- [Orchestrator](orchestrator.md) — the autonomous self-improving loop
+- [Orchestrator](orchestrator.md) — the Python ML training loop
+- [Two loops](two-loops.md) — Python ML loop + Claude code-improvement loop, side by side
 - [Hardware reality](hardware.md) — what 16 GB local can and can't do
 
 ## Reference
