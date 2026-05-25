@@ -1,0 +1,85 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "suno"
+version = "0.1.0"
+description = "Pakistan's open-source speech AI stack — STT and TTS for Urdu and other Pakistani languages"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [
+  { name = "Suno contributors" }
+]
+keywords = ["speech-to-text", "text-to-speech", "urdu", "whisper", "pakistan", "asr", "tts"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Multimedia :: Sound/Audio :: Speech",
+]
+dependencies = [
+  "torch>=2.1.0",
+  "torchaudio>=2.1.0",
+  "transformers>=4.40.0",
+  "datasets>=2.18.0",
+  "accelerate>=0.30.0",
+  "peft>=0.10.0",
+  "evaluate>=0.4.0",
+  "soundfile>=0.12.1",
+  "librosa>=0.10.1",
+  "numpy<2.0",
+  "scipy",
+  "pandas",
+  "tqdm",
+  "jiwer",
+  "PyYAML",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.4",
+  "pytest-cov",
+  "ruff>=0.4",
+  "mypy",
+  "pre-commit",
+]
+
+[project.urls]
+Homepage = "https://github.com/sovanza-inc/Suno"
+Documentation = "https://github.com/sovanza-inc/Suno/tree/main/docs"
+Repository = "https://github.com/sovanza-inc/Suno"
+Issues = "https://github.com/sovanza-inc/Suno/issues"
+
+[project.scripts]
+suno-loop  = "suno.orchestrator.loop:main"
+suno-stt   = "suno.models.stt.whisper_inference:main"
+suno-tts   = "suno.models.tts.mms_inference:main"
+suno-eval  = "suno.evaluation.stt:main"
+suno-train = "suno.models.stt.whisper_lora_trainer:main"
+suno-plan  = "suno.orchestrator.task_planner:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["suno*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "RUF"]
+ignore = ["E501"]  # line length handled by formatter
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-q --strict-markers"
+
+[tool.mypy]
+python_version = "3.11"
+strict_optional = true
+ignore_missing_imports = true

@@ -1,0 +1,35 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+.env
+.ipynb_checkpoints/
+
+# Large/derived artifacts — not committed
+data/
+models/
+outputs/
+hf_cache/
+logs/
+state/*.json.tmp
+*.wav
+*.mp3
+*.flac
+*.ckpt
+*.pt
+*.safetensors
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+src/*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Editor
+.vscode/
+.idea/

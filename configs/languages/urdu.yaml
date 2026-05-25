@@ -1,0 +1,28 @@
+language:
+  code_iso639_1: ur
+  code_iso639_3: urd
+  whisper_language: urdu
+  script: arabic
+
+audio:
+  sample_rate: 16000
+  normalize_loudness: true
+  target_lufs: -23.0
+
+stt:
+  production_model: openai/whisper-large-v3
+  fast_model: openai/whisper-small
+  forced_language: urdu
+  beam_size: 5
+  vad_threshold: 0.5
+
+tts:
+  baseline_model: facebook/mms-tts-urd   # CC-BY-NC, benchmark only
+  output_sample_rate: 16000
+
+eval:
+  default_dataset: google/fleurs
+  default_config: ur_pk
+  default_split: test
+  primary_metric: wer
+  secondary_metric: cer

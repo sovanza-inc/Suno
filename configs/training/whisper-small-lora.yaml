@@ -1,0 +1,30 @@
+# Default LoRA training config for Whisper-small on M5 Pro 16 GB.
+# Read by suno.models.stt.whisper_lora_trainer when no CLI overrides are passed.
+# Also documents what the orchestrator uses per iteration.
+
+base_model: openai/whisper-small
+
+lora:
+  r: 32
+  alpha: 64
+  dropout: 0.05
+  target_modules: [q_proj, v_proj]
+  bias: none
+
+optim:
+  learning_rate: 1.0e-4
+  batch_size: 1
+  gradient_accumulation_steps: 8     # effective batch 8
+  warmup_steps_ratio: 0.1            # min(20, max_steps/10)
+
+steps_per_iteration: 200             # SUNO_TRAIN_STEPS override
+save_steps_equals_max: true
+save_total_limit: 2
+
+precision:
+  fp16: false                        # MPS correctness issues
+  bf16: false                        # ditto
+
+dataloader:
+  num_workers: 0
+  pin_memory: false
