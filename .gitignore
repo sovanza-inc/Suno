@@ -7,13 +7,13 @@ __pycache__/
 .env
 .ipynb_checkpoints/
 
-# Large/derived artifacts — not committed
-data/
-models/
-outputs/
-hf_cache/
-logs/
-state/*.json.tmp
+# Large/derived runtime artifacts — top-level only (do NOT match src/suno/data, src/suno/models)
+/data/
+/models/
+/outputs/
+/hf_cache/
+/logs/
+/state/*.json.tmp
 *.wav
 *.mp3
 *.flac
